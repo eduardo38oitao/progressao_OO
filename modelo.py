@@ -40,14 +40,13 @@ class Series(Programas):
         return f"{self.nome} - {self.ano} - {self.temporadas} Temporadas - {self._curtidas} Curtidas"
 
 
-class Playlist:
+class Playlist(list):
     def __init__(self,nomePL, elementos):
         self.nomePL = nomePL
-        self.elementos = elementos
+        super().__init__(elementos)
 #nomePL é o nome da playlist
 
-    def tamanho(self):
-        return len(self.programas)
+    
 
 # Criando os objetos do filme
 avatar = Filmes("avatar o caminho da água", 2022, 192)
@@ -66,5 +65,8 @@ serie2.curtir()
 filmes_series = [avatar, serie1, tmep6, serie2]
 plFim_de_semana = Playlist("Fim de semana",filmes_series)
 
-for programas in plFim_de_semana.elementos:
+print(f"Tamanho da list: {len(plFim_de_semana)}")
+print(f"Está na lista?{avatar in plFim_de_semana}")
+
+for programas in plFim_de_semana:
     print(programas)
