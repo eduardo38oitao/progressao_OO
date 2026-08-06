@@ -40,11 +40,20 @@ class Series(Programas):
         return f"{self.nome} - {self.ano} - {self.temporadas} Temporadas - {self._curtidas} Curtidas"
 
 
-class Playlist(list):
+class Playlist():
+    #nomePL é o nome da playlist
     def __init__(self,nomePL, elementos):
         self.nomePL = nomePL
-        super().__init__(elementos)
-#nomePL é o nome da playlist
+        self.elementos = elementos
+    
+    @property
+    def listagem(self):
+        return self._elementos
+    
+    @property
+    def tamanho(self):
+        return len(self._elementos)
+
 
     
 
@@ -52,7 +61,7 @@ class Playlist(list):
 avatar = Filmes("avatar o caminho da água", 2022, 192)
 tmep6 = Filmes("Todo mundo em panico 6", 2023, 140)
 #curtida
-avatar.curtir()  # Agora funciona corretamente
+avatar.curtir()  
 tmep6.curtir()
 #series
 serie1 = Series("heartbreak high", 2022, 3)
@@ -60,7 +69,7 @@ serie2 = Series("mentalista", 2022, 7)
 #curtida 
 serie1.curtir() 
 serie2.curtir()
- # Agora funciona corretamente
+
 
 filmes_series = [avatar, serie1, tmep6, serie2]
 plFim_de_semana = Playlist("Fim de semana",filmes_series)
